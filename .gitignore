@@ -1,0 +1,5 @@
+*.pyc
+*.txt
+*.log
+services-to-wordcloud/generated/*
+fonts/origin/*
