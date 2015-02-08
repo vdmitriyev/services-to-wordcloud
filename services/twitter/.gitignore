@@ -1,0 +1,3 @@
+*.pyc
+oauth_info.py
+data/*.csv
