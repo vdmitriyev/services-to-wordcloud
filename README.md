@@ -19,6 +19,7 @@ pip isntall matplotlib
 pip install pandas
 pip isntall scipy
 ```
+
 Or use 'conda' from Anaconda to install dependencies (*better solutions in case you are new to python or Windows user*):
 ```
 conda instal matplotlib
@@ -29,6 +30,11 @@ conda isntall matplotlib
 conda install pandas
 conda isntall scipy
 ```
+If you are not able to find package 'by default' with 'conda', please use 'binstar' to find proper binary of the package. For example for 'twitter' it looks like this:
+```
+binstar search -t conda twitter
+```
+
 
 Installing [wordcloud](https://github.com/amueller/word_cloud) package can be very tricky
 ```
