@@ -9,7 +9,7 @@ __maintainer__ = "-"
 __email__ = ""
 __status__ = "test"
 __date__ = "08.02.2015"
-__description__ = "Simple web crawler that uses beautifulsoup package."
+__description__ = "Yiny python utility that converts tweets cloud of words."
 
 import os
 import pandas as pd

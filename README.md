@@ -8,6 +8,12 @@ Tiny python utility that converts data crawled from different services into clou
 * Heavily inspired by the article [Turn Your Twitter Timeline into a Word Cloud Using Python](http://sebastianraschka.com/Articles/2014_twitter_wordcloud.html#A.-Downloading-Your-Twitter-Timeline-Tweets) written by [@rasbt](https://github.com/rasbt)
 * Fonts are taken from the various of places and initially distributed by the authors under one of the open licenses. A huge collection of fonts can be found in the [googlefontdirectory github repository](https://github.com/w0ng/googlefontdirectory).
 
+### Examples Generated
+
+![](./examples/twitter-wordcloud-arvo-regular-square_mask-black.png)
+![](./examples/twitter-wordcloud-monaco-twitter_mask-white.png)
+
+
 ### Installation
 Use 'pip' to install dependencies
 ```
@@ -34,7 +40,6 @@ If you are not able to find package 'by default' with 'conda', please use 'binst
 ```
 binstar search -t conda twitter
 ```
-
 
 Installing [wordcloud](https://github.com/amueller/word_cloud) package can be very tricky
 ```
