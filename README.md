@@ -17,24 +17,24 @@ Tiny python utility that converts data crawled from different services into clou
 ### Installation
 Use 'pip' to install dependencies
 ```
-pip instal matplotlib
+pip install matplotlib
 pip install twitter 
-pip intall pyprind
+pip install pyprind
 pip install numpy
-pip isntall matplotlib
+pip install matplotlib
 pip install pandas
-pip isntall scipy
+pip install scipy
 ```
 
 Or use 'conda' from Anaconda to install dependencies (*better solutions in case you are new to python or Windows user*):
 ```
-conda instal matplotlib
+conda install matplotlib
 conda install twitter 
-conda intall pyprind
+conda install pyprind
 conda install numpy
-conda isntall matplotlib
+conda install matplotlib
 conda install pandas
-conda isntall scipy
+conda install scipy
 ```
 If you are not able to find package 'by default' with 'conda', please use 'binstar' to find proper binary of the package. For example for 'twitter' it looks like this:
 ```
