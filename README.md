@@ -26,7 +26,7 @@ pip install pandas
 pip install scipy
 ```
 
-Or use 'conda' from Anaconda to install dependencies (*better solutions in case you are new to python or Windows user*):
+Or use 'conda' from [Anaconda Scientific Python Distribution](https://store.continuum.io/cshop/anaconda/) to install dependencies (*better solutions in case you are new to python or Windows user*):
 ```
 conda install matplotlib
 conda install twitter 
