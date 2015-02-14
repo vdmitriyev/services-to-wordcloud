@@ -10,8 +10,8 @@ Tiny python utility that converts data crawled from different services into clou
 
 ### Examples Generated
 
-![](./examples/twitter-wordcloud-arvo-regular-square_mask-black.png)
-![](./examples/twitter-wordcloud-monaco-twitter_mask-white.png)
+![](./img-examples/twitter-wordcloud-arvo-regular-square_mask-black.png)
+![](./img-examples/twitter-wordcloud-monaco-twitter_mask-white.png)
 
 
 ### Installation
@@ -46,6 +46,8 @@ Installing [wordcloud](https://github.com/amueller/word_cloud) package can be ve
 pip install git+git://github.com/amueller/word_cloud.git
 conda install pil
 ```
+
+In case you really need to compile a python package on Windows, do not use MinGW, it won't work. Because the official compiler for the Python on Windows is *Microsoft Visual C++ Compiler*, the patch for your Windows can be found [here](http://www.microsoft.com/en-us/download/details.aspx?id=44266). Howeverm if you are fan of the MinGW and it's already installed and used as a "default" C and C++ compiler on your Windows machine, on the moment of the Python package compilation (while intalling [wordcloud](https://github.com/amueller/word_cloud)) is better to remove it from your %PATH% variable.
 
 ### Author
 * [Viktor Dmitriyev](https://github.com/vdmitriyev)
