@@ -4,24 +4,24 @@ __author__ = "Viktor Dmitriyev"
 __copyright__ = "Copyright 2015, Viktor Dmitriyev"
 __credits__ = ["Viktor Dmitriyev"]
 __license__ = "MIT"
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 __maintainer__ = "-"
 __email__ = ""
-__status__ = "test"
+__status__ = "dev"
 __date__ = "08.02.2015"
-__description__ = "Yiny python utility that converts tweets cloud of words."
+__description__ = "Tiny python utility that converts tweets into cloud of words."
 
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud, STOPWORDS
-from helper import DirectoryHelper
+from helper_wordcloud import WordCloudHelper
 
 class DataLoader():
 
-  def load_data_web(self):
+  def load_webdata(self):
     """
-      (Class) -> None or DataFrame
+      (class) -> None
 
       Loading data stored somewhere on the web
     """
@@ -34,9 +34,9 @@ class DataLoader():
     #return df
     return None
 
-  def load_data_local(self):
+  def load_localdata(self):
     """
-      (Class) -> None or DataFrame
+      (class) -> DataFrame
 
       Loading data stored locally.
     """
@@ -56,40 +56,53 @@ class DataLoader():
 
 class TwitterToWordCloud():
 
-  def __init__(self):
+  def __init__(self, save_directory=None):
+    """
+      (obj) -> None
+
+      Initializing the class.
+    """
+    
     print '[i] initializing class'
+
+    if save_directory is None:
+      save_directory = 'generated-twitter'
+    print '[i] generated pngs will be saved inside "{}"'.format(save_directory)
+
+    self.wc_helper = WordCloudHelper(save_directory)
+    print '[i] initialing helper class'
+    
 
     self.STOPWORDS = STOPWORDS
     print '[i] stopwords loaded'
-
-    self.stop_words_configs()
-    print '[i] stopwords configured'
-
-    self.df = DataLoader().load_data_local()
+    
+    self.df = DataLoader().load_localdata()
     print '[i] data loaded'
 
-    self.data_wrangling()
+    self.config_stopwords()
+    print '[i] stopwords configured'
+
+    self.wrangle_data()
     print '[i] data formatted'
 
-    self.helper = DirectoryHelper()
-    self.helper.prepare_working_directory()
-    print '[i] working directory prepared'
-
-
-  def stop_words_configs(self):
+  def config_stopwords(self):
     """
+      (obj) -> None
+
       Configuring stopwords by adding more if required
     """
     more_stopwords = {'innojam', 'video', 'cebit2014'}
     self.STOPWORDS = STOPWORDS.union(more_stopwords)
 
-  def data_wrangling(self):
+  def wrangle_data(self):
     """
+      (obj) -> None
 
       Wranling with data before porcessing it
     """
     # join tweets to a single string
     words = ' '.join(self.df['tweet'])
+
     # remove URLs, RTs, and twitter handles
     no_urls_no_tags = " ".join([word for word in words.split() 
                               if 'http' not in word
@@ -98,73 +111,36 @@ class TwitterToWordCloud():
                               ])
     self.words = no_urls_no_tags
 
-  def load_fonts(self, selected_fonts=None):
+  
+  def generate_word_cloud(self, fonts, masks, name_prefix = None, bg_color='white'):
     """
-      (Class, list) -> dict
-
-      Loading fonts as specified in the list or by itereting folder with fonts.
-    """
-
-    BASE_FOLDER = self.helper.upper_directory() + 'fonts\\'
-
-    fonts = {}
-
-    if selected_fonts is not None:
-      for font in selected_fonts:
-        fonts[font] = BASE_FOLDER + font + '.ttf'
-    else:
-      files = [f for f in os.listdir(BASE_FOLDER)]
-      for f in files:
-        if (f[-4:].lower() in ('.ttf')):
-          fonts[f[:-4]] = BASE_FOLDER + f
-    
-
-    return fonts
-
-  def load_masks(self, selected_masks=None):
-    """
-      (Class, list) -> dict
-
-        Loading masks as specified in the list or by itereting folder with masks.
-    """
-    
-    BASE_FOLDER = self.helper.upper_directory() + 'masks\\'
-
-    masks = {}
-    if selected_masks is not None:
-      for mask in selected_masks:
-        masks[mask] = BASE_FOLDER + mask + '.png'
-    else:
-      files = [f for f in os.listdir(BASE_FOLDER)]
-      for f in files:
-        if (f[-4:].lower() in ('.png')):
-          masks[f[:-4]] = BASE_FOLDER + f
-
-    return masks
-
-  def generate_word_cloud(self, fonts, masks, bg_color='white'):
-    """
-      (Class, list, list, str) -> None
+      (obj, list, list, str) -> None
       
       Generating the word clouds with different masks and fonts and saving it as images.
     """
 
-    BASE_FOLDER = 'generated\\'
+    if name_prefix is None:
+      name_prefix = 'twitter-wordcloud'
+
+    BASE_FOLDER = self.wc_helper.save_dir
     STOPWORDS = self.STOPWORDS
+    print BASE_FOLDER
 
     from scipy.misc import imread
 
     for mask_name in masks:
       _mask_file = imread(masks[mask_name], flatten=True)
+      _mask_width = len(_mask_file[0]) + 1
+      _mask_height = len(_mask_file) + 1
       for font_name in fonts:
         _font_file = fonts[font_name]
-        _img_name = 'twitter-wordcloud-%s-%s-%s' % (str(font_name), str(mask_name), str(bg_color))
+        _img_name = '%s-%s-%s-%s' % (str(name_prefix), str(font_name), str(mask_name), str(bg_color))
         wordcloud = WordCloud( 
                       font_path=_font_file,
                       stopwords=STOPWORDS,
                       background_color=bg_color,
-                      width=1800,
-                      height=1400,
+                      width=_mask_width,
+                      height=_mask_height,
                       mask=_mask_file
                      ).generate(self.words)
         plt.imshow(wordcloud)
@@ -175,16 +151,18 @@ class TwitterToWordCloud():
 
   def process(self):
     """
+      (obj) -> None
+
       Executing all methods relevant to processing.
     """
-
-    some_fonts = ['monaco', 'menlo-regular', 'arvo-regular']
+    #some_fonts = ['monaco', 'menlo-regular', 'arvo-regular']
+    some_fonts = ['monaco']
     some_masks = ['twitter_mask']
 
-    #fonts = self.load_fonts(some_fonts)
-    #masks = self.load_masks(some_masks)
-    fonts = self.load_fonts()
-    masks = self.load_masks()
+    fonts = self.wc_helper.load_fonts(some_fonts)
+    masks = self.wc_helper.load_masks(some_masks)
+    #fonts = self.wc_helper.load_fonts()
+    #masks = self.wc_helper.load_masks()
 
     self.generate_word_cloud(fonts, masks)
     self.generate_word_cloud(fonts, masks, bg_color='black')

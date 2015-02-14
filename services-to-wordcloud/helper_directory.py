@@ -8,25 +8,34 @@ __license__ = "MIT"
 __version__ = "1.0.0"
 __maintainer__ = "-"
 __email__     = ""
-__status__     = "Test"
+__status__     = "dev"
 __date__    = "26.01.2015"
 __description__ = "Helper for the crawler that manages directory"
 
 import os
 import string
 import random
-from time import gmtime, strftime
 import codecs
 import shutil
+from time import gmtime, strftime
 
-TEMP_DIRECTORY = 'generated'
 RAND_RANGE = 7
 
 class DirectoryHelper():
+    
+    def __init__(self , proposed_dir=None):
+        """
+            (obj, str) -> None
 
-    def __init__(self):
+            Initializing the class.
+        """
+
+        WORK_DIRECTORY = 'generated'
+        if proposed_dir is not None:
+            WORK_DIRECTORY = proposed_dir
+
         self.current_dir = os.path.dirname(os.path.abspath(__file__)) + '\\'
-        self.temp_dir = self.current_dir + TEMP_DIRECTORY + '\\'
+        self.work_dir = self.current_dir + WORK_DIRECTORY + '\\'
 
     def clear_directory(self, directory):
         """
@@ -61,13 +70,13 @@ class DirectoryHelper():
                 -
         """
 
-        if not os.path.exists(self.temp_dir):
-            os.makedirs(self.temp_dir)
+        if not os.path.exists(self.work_dir):
+            os.makedirs(self.work_dir)
 
-        self.clear_directory(self.temp_dir)
+        self.clear_directory(self.work_dir)
 
 
-    def move_from_temp_directory(self):
+    def move_from_work_directory(self):
         """
             (obj) -> None
 

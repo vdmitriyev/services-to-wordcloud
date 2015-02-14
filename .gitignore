@@ -1,5 +1,5 @@
 *.pyc
 *.txt
 *.log
-services-to-wordcloud/generated/*
+services-to-wordcloud/generated-twitter/*
 fonts/origin/*
