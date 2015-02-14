@@ -20,26 +20,29 @@ Tiny python utility that converts data crawled from different services into clou
 
 
 ### Installation
+
+**Noe that** in this section only the main dependencies of the "services-to-wordcloud" are listed (except twitter). Dependencies of the each service are described inside *READMEs* services's own [folders](services).
+
 Use 'pip' to install dependencies
 ```
 pip install matplotlib
-pip install twitter 
 pip install pyprind
 pip install numpy
 pip install matplotlib
 pip install pandas
 pip install scipy
+pip install twitter
 ```
 
 Or use 'conda' from [Anaconda Scientific Python Distribution](https://store.continuum.io/cshop/anaconda/) to install dependencies (*better solutions in case you are new to python or Windows user*):
 ```
 conda install matplotlib
-conda install twitter 
 conda install pyprind
 conda install numpy
 conda install matplotlib
 conda install pandas
 conda install scipy
+conda install twitter 
 ```
 If you are not able to find package 'by default' with 'conda', please use 'binstar' to find proper binary of the package. For example for 'twitter' it looks like this:
 ```
