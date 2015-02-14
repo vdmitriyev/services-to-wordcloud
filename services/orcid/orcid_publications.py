@@ -92,9 +92,10 @@ def main():
     Main method that initiates instance of the class and starts processing.
   """
 
-  own_orcid_id = '0000-0001-5661-4587'  
+  alfonso_orcid_id = '0000-0001-8855-5569'  
+  
   csv_file_name = "orcid-publication-titles"
-  op = OrcidPublications(own_orcid_id, csv_file_name)
+  op = OrcidPublications(alfonso_orcid_id, csv_file_name)
   op.process()
 
 if __name__ == '__main__':
