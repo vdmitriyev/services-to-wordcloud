@@ -3,15 +3,20 @@ Tiny python utility that converts data crawled from different services into clou
 
 ### Supported Services so Far
 * [Twitter](https://twitter.com/)
+* [ORCID](http://orcid.org/)
 
 ### Credits
 * Heavily inspired by the article [Turn Your Twitter Timeline into a Word Cloud Using Python](http://sebastianraschka.com/Articles/2014_twitter_wordcloud.html#A.-Downloading-Your-Twitter-Timeline-Tweets) written by [@rasbt](https://github.com/rasbt)
 * Fonts are taken from the various of places and initially distributed by the authors under one of the open licenses. A huge collection of fonts can be found in the [googlefontdirectory github repository](https://github.com/w0ng/googlefontdirectory).
 
 ### Examples Generated
-
+** Twitter **
 ![](./img-examples/twitter-wordcloud-arvo-regular-square_mask-black.png)
 ![](./img-examples/twitter-wordcloud-monaco-twitter_mask-white.png)
+
+** ORCID with Simple Mask**
+![](./img-examples/orcid-wordcloud-arvo-regular-r_and_d-01-black.png)
+![](./img-examples/orcid-wordcloud-menlo-regular-r_and_d-01-white.png)
 
 
 ### Installation

@@ -112,15 +112,12 @@ class TwitterToWordCloud():
     self.words = no_urls_no_tags
 
   
-  def generate_word_cloud(self, fonts, masks, name_prefix = None, bg_color='white'):
+  def generate_word_cloud(self, fonts, masks, name_prefix = 'some-wordcloud', bg_color='white'):
     """
       (obj, list, list, str) -> None
       
       Generating the word clouds with different masks and fonts and saving it as images.
     """
-
-    if name_prefix is None:
-      name_prefix = 'twitter-wordcloud'
 
     BASE_FOLDER = self.wc_helper.save_dir
     STOPWORDS = self.STOPWORDS
@@ -164,8 +161,8 @@ class TwitterToWordCloud():
     #fonts = self.wc_helper.load_fonts()
     #masks = self.wc_helper.load_masks()
 
-    self.generate_word_cloud(fonts, masks)
-    self.generate_word_cloud(fonts, masks, bg_color='black')
+    self.generate_word_cloud(fonts, masks, name_prefix='twitter-wordcloud')
+    self.generate_word_cloud(fonts, masks, name_prefix='twitter-wordcloud', bg_color='black')
 
 def main():
   """

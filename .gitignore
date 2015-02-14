@@ -3,3 +3,4 @@
 *.log
 services-to-wordcloud/generated-twitter/*
 fonts/origin/*
+README.html
