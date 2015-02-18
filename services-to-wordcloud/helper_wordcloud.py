@@ -4,12 +4,12 @@ __author__ = "Viktor Dmitriyev"
 __copyright__ = "Copyright 2015, Viktor Dmitriyev"
 __credits__ = ["Viktor Dmitriyev"]
 __license__ = "MIT"
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 __maintainer__ = "-"
 __email__ = ""
 __status__ = "dev"
 __date__ = "14.02.2015"
-__description__ = "Helper class for wordcloud. Main processing class"
+__description__ = "Main class and some helper class for the word cloud"
 
 import os
 import pandas as pd
