@@ -20,16 +20,25 @@ logging.getLogger("#orcid#").setLevel(logging.INFO)
 
 class OrcidPublicationAbstracts():
 
-    def __init__(self, orcid_id, csv_file_name):
+    def __init__(self, orcid_id, csv_file_name, load=True):
+        """
+            (class, str, str, boolean) -> None
 
+            Method that initialtes all very first activities.
+        """
+
+        self.load = load
         self.data = {}
 
         self.orcid_id = orcid_id
         print '[i] ORCID {} will be processed'.format(self.orcid_id)
         self.csv_file_name = csv_file_name
 
-        self.orcid = pyorcid.get(self.orcid_id)
-        print '[i] data of from the ORCID retrieved'
+        if self.load:
+            self.orcid = pyorcid.get(self.orcid_id)
+            print '[i] data of from the ORCID retrieved'
+        else:
+            print '[i] data won\'t be loaded, the already loaded bibtex will be used'
 
     def save_bibtex(self, bibtex, file_name='orcid-bibtex-output', encoding='utf-8'):
         """
@@ -52,9 +61,9 @@ class OrcidPublicationAbstracts():
 
         _file.close()
 
-        print '[i] bibtex was created, check following file: %s ' % (file_name)
+        print '[i] bibtex was created, check following file: {}'.format(full_path)
 
-    def bibtex_abstracts(self):
+    def extract_bibtex(self):
         """
             (class) -> dict()
 
@@ -74,7 +83,26 @@ class OrcidPublicationAbstracts():
 
         self.save_bibtex(bibtex)
 
-    def save_csv(self, file_name):
+    def parse_bibtex(self, full_path=None):
+        """
+            (class, str) -> None
+        """
+
+        if full_path is None:
+            full_path = 'data\\orcid-bibtex-output.bib'
+
+        with open(full_path) as bibtex_file:
+            bibtex_str = bibtex_file.read()
+
+        bib_database = bibtexparser.loads(bibtex_str)
+        self.data['pubabstract'] = list()
+        for _bibtex in bib_database.entries:
+            try:
+                self.data['pubabstract'].append(_bibtex['abstract'])
+            except Exception, ex:
+                print '[e] exception {}'.format(str(ex))
+
+    def save_csv(self, file_name=None):
         """
             (obj, str) -> None
 
@@ -82,13 +110,16 @@ class OrcidPublicationAbstracts():
             Saves the data from twitter in csv using pandas.
         """
 
+        if file_name is None:
+            file_name = self.csv_file_name
+
         if not os.path.exists('data'):
             os.makedirs('data')
 
         # coverting data into csv
-        _csv_data = "pubtitle" + "\n"
-        for value in self.data["pubtitle"]:
-            _csv_data += value + "\n"
+        _csv_data = "pubabstract" + "\n"
+        for value in self.data["pubabstract"]:
+            _csv_data += value.replace(',', '') + "\n"
 
         # saving to the csv file
         full_path = 'data\\' + file_name + '.csv'
@@ -101,12 +132,15 @@ class OrcidPublicationAbstracts():
     def process(self):
         """
             (obj) -> None
+
             Extrating publication titles from ORCID and saving into CSVs
         """
 
-        self.bibtex_abstracts()
-        #self.save_csv(self.csv_file_name)
+        if self.load:
+            self.extract_bibtex()
 
+        self.parse_bibtex()
+        self.save_csv()
 
 def main():
   """
@@ -117,9 +151,9 @@ def main():
 
   _orcid_id = '0000-0001-5661-4587'  
   
-  csv_file_name = "orcid-publication-abstracts"
-  op = OrcidPublicationAbstracts(_orcid_id, csv_file_name)
-  op.process()
+  csv_file_name = "orcid-publications-abstracts"
+  opa = OrcidPublicationAbstracts(_orcid_id, csv_file_name, load=True)
+  opa.process()
 
 if __name__ == '__main__':
   main()

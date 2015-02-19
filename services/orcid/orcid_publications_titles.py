@@ -94,7 +94,7 @@ def main():
 
   alfonso_orcid_id = '0000-0001-8855-5569'  
   
-  csv_file_name = "orcid-publication-titles"
+  csv_file_name = "orcid-publications-titles"
   op = OrcidPublications(alfonso_orcid_id, csv_file_name)
   op.process()
 
