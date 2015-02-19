@@ -22,6 +22,7 @@ Manual installation (or usage):
 
 * requests>=1.0.4
 * lucene-querybuilder>=0.1.6
+* bibtexparser
 
 Install dependencies with pip
 ```
