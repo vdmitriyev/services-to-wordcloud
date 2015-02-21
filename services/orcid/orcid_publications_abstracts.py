@@ -1,6 +1,6 @@
 # coding: utf-8
 
-# maing testing library
+# main library for ORCID
 import pyorcid
 
 # additional libraries

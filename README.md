@@ -4,6 +4,7 @@ Tiny python utility that converts data crawled from different services into clou
 ### Supported Services so Far
 * [Twitter](https://twitter.com/)
 * [ORCID](http://orcid.org/)
+* [RSS](http://en.wikipedia.org/wiki/RSS)
 
 ### Credits
 * Heavily inspired by the article [Turn Your Twitter Timeline into a Word Cloud Using Python](http://sebastianraschka.com/Articles/2014_twitter_wordcloud.html#A.-Downloading-Your-Twitter-Timeline-Tweets) written by [@rasbt](https://github.com/rasbt)
@@ -18,6 +19,9 @@ Tiny python utility that converts data crawled from different services into clou
 **ORCID with Simple Mask**
 ![](./img-examples/orcid-wordcloud-menlo-regular-r_and_d-01-black.png)
 ![](./img-examples/orcid-wordcloud-arvo-regular-r_and_d-01-white.png)
+
+**RSS with Simple Mask**
+![](./img-examples/rss-wordcloud-monaco-rss-white.png)
 
 ### Installation
 

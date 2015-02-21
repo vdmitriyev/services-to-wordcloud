@@ -3,5 +3,6 @@
 *.log
 services-to-wordcloud/generated-twitter/*
 services-to-wordcloud/generated-orcid/*
+services-to-wordcloud/generated-rss/*
 fonts/origin/*
 README.html

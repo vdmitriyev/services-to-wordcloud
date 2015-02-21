@@ -14,8 +14,9 @@ import logging
 #logging.getLogger("#orcid#").setLevel(logging.DEBUG)
 logging.getLogger("#orcid#").setLevel(logging.INFO)
 
-# CSV Fields
+# configd for teh CSV
 CSV_FIELD_NAME = 'rssEntry'
+CSV_DELIM = ','
 
 class RSSParser():
 
@@ -44,7 +45,7 @@ class RSSParser():
 
                 Interenal method that normalizes data from the feed
             """
-            result = input_data.replace(",","")
+            result = input_data.replace(CSV_DELIM,"")
             result = result.replace("\n","")
             return result
 
@@ -71,9 +72,9 @@ class RSSParser():
             file_name = self.csv_file_name
 
         # coverting data into csv
-        _csv_data = CSV_FIELD_NAME + "\n"
-        for value in self.data[CSV_FIELD_NAME]:
-            _csv_data += value + "\n"
+        _csv_data = 'ID' + CSV_DELIM + CSV_FIELD_NAME + '\n'
+        for index, value in enumerate(self.data[CSV_FIELD_NAME]):
+            _csv_data += str(index) + CSV_DELIM + value + '\n'
 
         # saving to the csv file
         full_path = 'data\\' + file_name + '.csv'
@@ -102,7 +103,7 @@ def main():
 
   rss_url = 'https://vdmitriyev.wordpress.com/feed/'
   
-  csv_file_name = "rss-blog"
+  csv_file_name = "rss-entries"
   rss = RSSParser(rss_url, csv_file_name)
   rss.process()
 
