@@ -17,7 +17,7 @@ Tiny python utility that converts data crawled from different services into clou
 ![](./img-examples/twitter-wordcloud-monaco-twitter_mask-white.png)
 
 **ORCID with Simple Mask**
-![](./img-examples/orcid-wordcloud-arvo-regular-r_and_d-01-white.png)
+![](./img-examples/orcid-wordcloud-arvo-regular-r_and_d.png)
 
 **RSS with Simple Mask**
 ![](./img-examples/rss-wordcloud-monaco-rss-white.png)
