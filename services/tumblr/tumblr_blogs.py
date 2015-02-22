@@ -30,7 +30,7 @@ class TimelineMiner(object):
         self.consumer_secret = consumer_secret
         self.user_name = user_name
         self.auth = None
-        self.df = pd.DataFrame(columns=['timestamp', 'blog'], dtype='str')
+        self.df = pd.DataFrame(columns=['timestamp', 'tumblrBlog'], dtype='str')
 
 
     def authenticate(self):
@@ -61,7 +61,7 @@ class TimelineMiner(object):
         for entry in posts['posts']:
             blog_text = self.__get_replaced(entry)
             blog_date = self.__get_date(entry)
-            self.df.loc[counter,'blog'] = blog_text
+            self.df.loc[counter,'tumblrBlog'] = blog_text
             self.df.loc[counter,'timestamp'] = blog_date
             counter += 1
         print()
