@@ -22,6 +22,10 @@ Tiny python utility that converts data crawled from different services into clou
 **RSS with Simple Mask**
 ![](./img-examples/rss-wordcloud-monaco-rss-white.png)
 
+**Tumblr**
+![](./img-examples/tumblr-wordcloud-menlo-regular-square_mask-black.png)
+
+
 ### Installation
 
 **Noe that** in this section only the main dependencies of the "services-to-wordcloud" are listed (except twitter). Dependencies of the each service are described inside *READMEs* services's own [folders](services).
