@@ -34,6 +34,11 @@ class TimelineMiner(object):
 
 
     def authenticate(self):
+        """
+            (class) -> boolean
+
+            Passing throught authentication and verifying if the right credentials were given.
+        """
         
         self.client = pytumblr.TumblrRestClient(
                         self.consumer_key,
@@ -51,13 +56,14 @@ class TimelineMiner(object):
             print '[e] exception {}'.format(str(ex))
         return False
 
-    def get_blogs(self, max=0, keywords=[]):
+    def get_blogs(self):
+        """
+            (class) -> None
 
-        
-        last_count = 200
-        counter = 0
+            Getting blog posts from the Tumblr and saving them.
+        """
+
         posts = self.client.posts(self.user_name, type='text') # get posts for a blog
-        #print posts
         for entry in posts['posts']:
             blog_text = self.__get_replaced(entry)
             blog_date = self.__get_date(entry)

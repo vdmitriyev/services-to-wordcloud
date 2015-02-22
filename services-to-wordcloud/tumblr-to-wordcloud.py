@@ -71,7 +71,7 @@ def main():
   data_folder = '../services/tumblr/data/'
   save_directory = 'generated-tumblr'
   service_name = 'tumblr-wordcloud'
-  fonts = ['monaco']
+  fonts = None
   masks = ['square_mask']
 
   service = TumblrServiceToWC(data_file, data_folder, save_directory)
