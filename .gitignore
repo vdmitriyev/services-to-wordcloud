@@ -1,8 +1,6 @@
 *.pyc
 *.txt
 *.log
-services-to-wordcloud/generated-twitter/*
-services-to-wordcloud/generated-orcid/*
-services-to-wordcloud/generated-rss/*
+services-to-wordcloud/generated-*/*
 fonts/origin/*
 README.html
