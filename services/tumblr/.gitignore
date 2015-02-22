@@ -2,3 +2,4 @@
 *.txt
 oauth_info.py
 data/*.csv
+README.html
