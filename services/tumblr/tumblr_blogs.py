@@ -13,12 +13,8 @@ __description__ = "Tiny python utility that downloads blogs from Tumblr."
 
 import pytumblr
 from datetime import datetime
-import time
 import os
-import re
-import sys
 import pandas as pd
-import pyprind as pp
 import oauth_info as auth # our local file with the OAuth infos
 
 class TimelineMiner(object):
@@ -62,7 +58,7 @@ class TimelineMiner(object):
 
             Getting blog posts from the Tumblr and saving them.
         """
-
+        counter = 0
         posts = self.client.posts(self.user_name, type='text') # get posts for a blog
         for entry in posts['posts']:
             blog_text = self.__get_replaced(entry)
@@ -70,7 +66,6 @@ class TimelineMiner(object):
             self.df.loc[counter,'tumblrBlog'] = blog_text
             self.df.loc[counter,'timestamp'] = blog_date
             counter += 1
-        print()
         
     def make_csv(self, path):
         """
