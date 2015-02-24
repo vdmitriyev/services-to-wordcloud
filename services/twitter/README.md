@@ -28,4 +28,5 @@ USER_NAME = ''
 Check file 'run.bat' for running details or execute script using following command line:
 ```
 python twitter_timeline.py -o data/twitter-data.csv
+python twitter_user_locations.py -o data/twitter-user-locations-data.csv
 ```
