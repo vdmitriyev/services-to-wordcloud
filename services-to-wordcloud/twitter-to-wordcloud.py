@@ -79,22 +79,33 @@ class TwitterLocationsServiceToWC(ServiceToWordCloud):
     """
 
     def to_latin(plain):
-      cyrilic_list = ['Россия', 'Казахстан', 'Алматы']
+      """
+        (str) -> str
+
+        Internal method that counvers non-latin names to the latin ones.
+        Method requires the name specification inside arrays (non latin and latin arrays):
+          - non_latin_list
+          - latin_list
+      """
+
+      non_latin_list = ['Россия', 'Казахстан', 'Алматы']
       latin_list = ['Russia', 'Kazakhstan', 'Almaty']
-      for index, value in enumerate(cyrilic_list):
+
+      for index, value in enumerate(non_latin_list):
         if plain.lower() == value.lower():
           return latin_list[index]
       return plain
 
-    # join tweets to a single string
+    # join locations to a single string
     words = ''
     for value in self.df['location']:
       words += ' ' + to_latin(str(value))
 
-    # removal special symbols 
+    # removing special symbols 
     reg_exp = '[",]'
     words = re.sub(reg_exp, " ", words)
-    # remove URLs, RTs, and twitter handles
+
+    # remove nans, @ and URLs
     cleaned_data = " ".join([word for word in words.split() 
                               if 'http' not in word
                                 and not word.startswith('@')

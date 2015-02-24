@@ -40,13 +40,17 @@ class TimelineMiner(object):
         """
             (obj) -> None
 
-
+            Method extracts the twitter followers of the specified user and then initiates lookup in order to extract locations.
         """
 
         counter = 0
         lookup_ids = list()
         
         def _fire_lookup(counter, look_up):
+            """
+                (str, list) -> None
+                Internal method to lookup user accounts by ID.
+            """
             follower_ids = self.auth.users.lookup(user_id=look_up)
             for follower in follower_ids:
                 #self.df.loc[counter,'screen_name'] = follower['screen_name']
@@ -109,7 +113,6 @@ if __name__ == "__main__":
                        auth.CONSUMER_SECRET,
                        auth.USER_NAME)
    
-        
     print('Authentification successful: %s' %tm.authenticate())
     tm.get_list_of_users()
     tm.make_csv(args.out)
