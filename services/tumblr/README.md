@@ -7,7 +7,6 @@ A simple command line tool that downloads your personal tumlr text blogs in CSV 
 ```
 pip install pytumblr
 pip install pandas
-pip install pyprind
 ```
 ### Tumblr Usage
 
