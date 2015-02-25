@@ -4,7 +4,7 @@ A simple wrapper around the orcid.org API. Enhanced clone of this rep - https://
 
 ### Install
 
-** NOTE ** pyorcid installation that is described below is already shiped with the "services-to-wordcloud". Install only dependencies of it (see the section *Dependencies*).
+**NOTE** pyorcid installation that is described below is already shiped with the "services-to-wordcloud". Install only dependencies of it (see the section *Dependencies*).
 
 Install at once with pip
 ```

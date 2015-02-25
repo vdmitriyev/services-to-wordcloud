@@ -6,6 +6,7 @@ Tiny python utility that converts data crawled from different services into clou
 * [ORCID](http://orcid.org/)
 * [RSS](http://en.wikipedia.org/wiki/RSS)
 * [Tumblr](https://www.tumblr.com/)
+* [GitHub](https://github.com/)
 
 ### Credits
 * Heavily inspired by the article [Turn Your Twitter Timeline into a Word Cloud Using Python](http://sebastianraschka.com/Articles/2014_twitter_wordcloud.html#A.-Downloading-Your-Twitter-Timeline-Tweets) written by [@rasbt](https://github.com/rasbt)
@@ -26,6 +27,8 @@ Tiny python utility that converts data crawled from different services into clou
 **Tumblr**
 ![](./img-examples/tumblr-wordcloud-menlo-regular-square_mask-black.png)
 
+**GitHub Commits**
+![](./img-examples/github-wordcloud-arvo-regular-github-logo-original-black.png)
 
 ### Installation
 

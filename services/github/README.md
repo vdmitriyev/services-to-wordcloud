@@ -4,7 +4,7 @@ Tiny python utility that downloads text messages of your commits from particular
 
 ### Install
 
-** NOTE ** github api wrapper installation is already shiped with the "services-to-wordcloud". Install only dependencies of it (see the section *Dependencies*).
+**NOTE** github api wrapper installation is already shiped with the "services-to-wordcloud". Install only dependencies of it (see the section *Dependencies*).
 
 Or use pip to install both dependencies
 ```
