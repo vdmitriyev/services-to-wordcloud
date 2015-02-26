@@ -27,7 +27,7 @@ class TwitterServiceToWC(ServiceToWordCloud):
     super(TwitterServiceToWC, self).__init__(*args, **kwargs)
 
     # configuring stopwords
-    twitter_stopwords = {'innojam', 'video', 'cebit2014'}
+    twitter_stopwords = {'innojam', 'video', 'cebit2014', 'c'}
     self.config_stopwords(twitter_stopwords)
 
     # wrangling twitter data
@@ -122,8 +122,8 @@ def process_tweets():
   data_folder = '../services/twitter/data/'
   save_directory = 'generated-twitter-twee'
   service_name = 'twitter-wordcloud-twee'
-  fonts = ['monaco']
-  masks = ['twitter_mask']
+  fonts = None
+  masks = ['square-mask']
 
   service = TwitterServiceToWC(data_file, data_folder, save_directory)
   #owc.process(service_name)
@@ -136,8 +136,8 @@ def process_users_locations():
   data_folder = '../services/twitter/data/'
   save_directory = 'generated-twitter-loc'
   service_name = 'twitter-wordcloud-loc'
-  fonts = ['monaco']
-  masks = ['twitter_mask']
+  fonts = ['eater-regular', 'sirinstencil-regular', 'ribeye-regular']
+  masks = ['twitter-mask']
 
   service = TwitterLocationsServiceToWC(data_file, data_folder, save_directory)
   #owc.process(service_name)
@@ -150,7 +150,7 @@ def main():
     Main method that initiates instance of the class and starts processing.
   """
   process_tweets()
-  process_users_locations()
+  #process_users_locations()
 
 if __name__ == '__main__':
   main()

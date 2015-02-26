@@ -13,7 +13,7 @@ Tiny python utility that converts data crawled from different services into clou
 
 **Twitter Timeline**
 ![](./examples/twitter-wordcloud-arvo-regular-square_mask-black.png)
-![](./examples/twitter-wordcloud-monaco-twitter_mask-white.png)
+![](./examples/twitter-wordcloud-twee-walterturncoat-twitter-mask-white.png)
 
 **ORCID (publications abstracts)**
 ![](./examples/orcid-wordcloud-arvo-regular-r-and-d-black.png)
@@ -22,10 +22,10 @@ Tiny python utility that converts data crawled from different services into clou
 ![](./examples/rss-wordcloud-monaco-rss-white.png)
 
 **Tumblr Text Blogs**
-![](./examples/tumblr-wordcloud-menlo-regular-square_mask-black.png)
+![](./examples/tumblr-wordcloud-eater-regular-square-mask-black.png)
 
 **GitHub Commits**
-![](./examples/github-wordcloud-arvo-regular-github-logo-original-black.png)
+![](./examples/github-wordcloud-jollylodger-regular-github-logo-inverted-mask-black.png)
 
 ### Installation
 

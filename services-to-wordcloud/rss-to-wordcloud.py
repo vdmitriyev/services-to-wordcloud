@@ -72,7 +72,7 @@ def main():
   save_directory = 'generated-rss'
   service_name = 'rss-wordcloud'
   fonts = ['monaco']
-  masks = ['rss']
+  masks = ['rss-mask']
 
   service = RSSServiceToWC(data_file, data_folder, save_directory)
   service.process(service_name, fonts, masks)

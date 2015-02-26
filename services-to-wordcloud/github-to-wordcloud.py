@@ -72,7 +72,7 @@ def main():
   save_directory = 'generated-github'
   service_name = 'github-wordcloud'
   fonts = None
-  masks = ['github-logo-inverted', 'github-logo-original']
+  masks = ['github-logo-inverted-mask', 'github-logo-original-mask']
 
   service = GithubrServiceToWC(data_file, data_folder, save_directory)
   service.process(service_name, fonts, masks)

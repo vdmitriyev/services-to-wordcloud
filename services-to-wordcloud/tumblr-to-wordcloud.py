@@ -30,7 +30,7 @@ class TumblrServiceToWC(ServiceToWordCloud):
     super(TumblrServiceToWC, self).__init__(*args, **kwargs)
 
     # configuring stopwords
-    own_stopwords = {'pdf', 'programming', 'book', 'c', 'guide'}
+    own_stopwords = {'pdf', 'programming', 'book', 'c', 'guide', 's'}
     self.config_stopwords(own_stopwords)
 
     # wrangling twitter data
@@ -71,8 +71,8 @@ def main():
   data_folder = '../services/tumblr/data/'
   save_directory = 'generated-tumblr'
   service_name = 'tumblr-wordcloud'
-  fonts = None
-  masks = ['square_mask']
+  fonts = ['eater-regular', 'sirinstencil-regular', 'ribeye-regular']
+  masks = ['square-mask']
 
   service = TumblrServiceToWC(data_file, data_folder, save_directory)
   service.process(service_name, fonts, masks)

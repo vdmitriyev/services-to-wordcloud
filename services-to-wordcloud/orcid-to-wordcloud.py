@@ -46,7 +46,7 @@ def process_titles():
   save_directory = 'generated-orcid'
   service_name = 'orcid-titles-wordcloud'
   fonts = ['monaco']
-  masks = ['r_and_d']
+  masks = ['r-and-d-mask']
 
   owc = OrcidTitlesServiceToWC(data_file, data_folder, save_directory)
   #owc.process(service_name)
@@ -60,7 +60,7 @@ def process_abstracts():
   save_directory = 'generated-orcid'
   service_name = 'orcid-abstracts-wordcloud'
   fonts = ['monaco']
-  masks = ['square_mask']
+  masks = ['square-mask']
 
   owc = OrcidAbstractsServiceToWC(data_file, data_folder, save_directory)
   #owc.process(service_name)
