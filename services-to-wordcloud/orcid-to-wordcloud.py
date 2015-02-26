@@ -73,6 +73,8 @@ def main():
 
     Main method that initiates instance of the class and starts processing.
   """
+  
+  #process_titles():
   process_abstracts()
 
 if __name__ == '__main__':

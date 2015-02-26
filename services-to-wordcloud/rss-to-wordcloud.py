@@ -71,7 +71,7 @@ def main():
   data_folder = '../services/rss/data/'
   save_directory = 'generated-rss'
   service_name = 'rss-wordcloud'
-  fonts = ['monaco']
+  fonts = ['sirinstencil-regular', 'ribeye-regular']
   masks = ['rss-mask']
 
   service = RSSServiceToWC(data_file, data_folder, save_directory)

@@ -12,14 +12,14 @@ Tiny python utility that converts data crawled from different services into clou
 ### Examples Generated
 
 **Twitter Timeline**
-![](./examples/twitter-wordcloud-arvo-regular-square_mask-black.png)
+![](./examples/twitter-wordcloud-twee-jollylodger-regular-square-mask-black.png)
 ![](./examples/twitter-wordcloud-twee-walterturncoat-twitter-mask-white.png)
 
 **ORCID (publications abstracts)**
 ![](./examples/orcid-wordcloud-arvo-regular-r-and-d-black.png)
 
 **RSS Blog**
-![](./examples/rss-wordcloud-monaco-rss-white.png)
+![](./examples/rss-wordcloud-ribeye-regular-rss-mask-white.png)
 
 **Tumblr Text Blogs**
 ![](./examples/tumblr-wordcloud-eater-regular-square-mask-black.png)
