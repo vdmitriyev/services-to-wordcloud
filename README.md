@@ -1,4 +1,5 @@
 ### About
+
 Tiny python utility that converts data crawled from different services into cloud of words.
 
 ### Supported Services so Far
@@ -8,41 +9,35 @@ Tiny python utility that converts data crawled from different services into clou
 * [Tumblr](https://www.tumblr.com/)
 * [GitHub](https://github.com/)
 
-### Credits
-* Heavily inspired by the article [Turn Your Twitter Timeline into a Word Cloud Using Python](http://sebastianraschka.com/Articles/2014_twitter_wordcloud.html#A.-Downloading-Your-Twitter-Timeline-Tweets) written by [@rasbt](https://github.com/rasbt)
-* Fonts are taken from the various of places and initially distributed by the authors under one of the open licenses. A huge collection of fonts can be found in the [googlefontdirectory github repository](https://github.com/w0ng/googlefontdirectory).
-
 ### Examples Generated
 
-**Twitter**
-![](./img-examples/twitter-wordcloud-arvo-regular-square_mask-black.png)
-![](./img-examples/twitter-wordcloud-monaco-twitter_mask-white.png)
+**Twitter Timeline**
+![](./examples/twitter-wordcloud-arvo-regular-square_mask-black.png)
+![](./examples/twitter-wordcloud-monaco-twitter_mask-white.png)
 
-**ORCID with Simple Mask**
-![](./img-examples/orcid-wordcloud-arvo-regular-r-and-d-black.png)
+**ORCID (publications abstracts)**
+![](./examples/orcid-wordcloud-arvo-regular-r-and-d-black.png)
 
-**RSS with Simple Mask**
-![](./img-examples/rss-wordcloud-monaco-rss-white.png)
+**RSS Blog**
+![](./examples/rss-wordcloud-monaco-rss-white.png)
 
-**Tumblr**
-![](./img-examples/tumblr-wordcloud-menlo-regular-square_mask-black.png)
+**Tumblr Text Blogs**
+![](./examples/tumblr-wordcloud-menlo-regular-square_mask-black.png)
 
 **GitHub Commits**
-![](./img-examples/github-wordcloud-arvo-regular-github-logo-original-black.png)
+![](./examples/github-wordcloud-arvo-regular-github-logo-original-black.png)
 
 ### Installation
 
-**Noe that** in this section only the main dependencies of the "services-to-wordcloud" are listed (except twitter). Dependencies of the each service are described inside *READMEs* services's own [folders](services).
+**NOTE** This section lists only the main dependencies of the "services-to-wordcloud". Dependencies of the each service are described inside *READMEs* services's own [services folders](services).
 
 Use 'pip' to install dependencies
 ```
-pip install matplotlib
 pip install pyprind
 pip install numpy
 pip install matplotlib
 pip install pandas
 pip install scipy
-pip install twitter
 ```
 
 Or use 'conda' from [Anaconda Scientific Python Distribution](https://store.continuum.io/cshop/anaconda/) to install dependencies (*better solutions in case you are new to python or Windows user*):
@@ -50,24 +45,29 @@ Or use 'conda' from [Anaconda Scientific Python Distribution](https://store.cont
 conda install matplotlib
 conda install pyprind
 conda install numpy
-conda install matplotlib
 conda install pandas
 conda install scipy
-conda install twitter 
 ```
-If you are not able to find package 'by default' with 'conda', please use 'binstar' to find proper binary of the package. For example for 'twitter' it looks like this:
+
+If you are not able to find package *'by default'* with ```'conda'```, please use 'binstar' to find proper binary of the package.
+For example for 'twitter' looks as follows:
 ```
 binstar search -t conda twitter
 ```
 
-Installing [wordcloud](https://github.com/amueller/word_cloud) package can be very tricky
+Installing [wordcloud](https://github.com/amueller/word_cloud) python package can be very tricky
 ```
-pip install git+git://github.com/amueller/word_cloud.git
 conda install pil
+pip install git+git://github.com/amueller/word_cloud.git
 ```
 
 In case you really need to compile a python package on Windows, do not use MinGW, it won't work. Because the official compiler for the Python on Windows is *Microsoft Visual C++ Compiler*, the patch for your Windows can be found [here](http://www.microsoft.com/en-us/download/details.aspx?id=44266). Howeverm if you are fan of the MinGW and it's already installed and used as a "default" C and C++ compiler on your Windows machine, on the moment of the Python package compilation (while intalling [wordcloud](https://github.com/amueller/word_cloud)) is better to remove it from your %PATH% variable.
 
+### Credits
+
+* Heavily inspired by the article [Turn Your Twitter Timeline into a Word Cloud Using Python](http://sebastianraschka.com/Articles/2014_twitter_wordcloud.html#A.-Downloading-Your-Twitter-Timeline-Tweets) written by [@rasbt](https://github.com/rasbt)
+* Fonts are taken from the various of places and initially distributed by the authors under one of the open licenses. A huge collection of fonts can be found in the [googlefontdirectory github repository](https://github.com/w0ng/googlefontdirectory).
+* 
 ### Author
 * [Viktor Dmitriyev](https://github.com/vdmitriyev)
 
