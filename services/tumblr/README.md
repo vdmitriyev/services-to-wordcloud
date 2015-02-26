@@ -8,6 +8,7 @@ A simple command line tool that downloads your personal tumlr text blogs in CSV 
 pip install pytumblr
 pip install pandas
 ```
+
 ### Tumblr Usage
 
 For the basic usage create file ```oauth_info.py``` with following filled Tumblr credentials.
