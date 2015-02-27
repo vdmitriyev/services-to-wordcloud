@@ -235,7 +235,7 @@ class DataLoader():
 
     #reading data
     try:
-      df = pd.read_csv(data_folder + data_file)
+      df = pd.read_csv(data_folder + data_file, encoding='utf-8')
     except Exception, ex:
       print '[e] %s' % str(ex)
       print '[i] it looks like no data were downloaded so far' 

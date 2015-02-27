@@ -51,11 +51,12 @@ class RSSServiceToWC(ServiceToWordCloud):
     no_html_words = re.sub(reg_exp, " ", words)
 
     # remove rowds with URLs, # and & 
-    no_urls_words = " ".join([word for word in no_html_words.split() 
+    no_urls_words = u' '.join([word for word in no_html_words.split() 
                               if 'http' not in word
                                 #and not word.startswith('@')
                               ])
 
+    #print no_urls_words
     self.words = no_urls_words
     print '[i] data formatted'
 
@@ -71,8 +72,8 @@ def main():
   data_folder = '../services/rss/data/'
   save_directory = 'generated-rss'
   service_name = 'rss-wordcloud'
-  fonts = ['sirinstencil-regular', 'ribeye-regular']
-  masks = ['rss-mask']
+  fonts = ['clearsans-regular']
+  masks = ['square-mask']
 
   service = RSSServiceToWC(data_file, data_folder, save_directory)
   service.process(service_name, fonts, masks)
