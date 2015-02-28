@@ -127,6 +127,18 @@ class DirectoryHelper():
             file_content = file_input.read()
         return file_content
 
+    def read_file_utf8(self, file_name):
+        """
+            (obj, str) -> (str)
+
+            Reads text from 'file_name' as UTF-8 and return it
+        """
+
+        with codecs.open(file_name, 'r', encoding='utf8') as f:
+            file_content = f.read()
+            
+        return file_content
+
     def gen_file_name(self, extention=".html", name=None):
         """
             (obj, str) -> (str)

@@ -8,6 +8,7 @@ Tiny python utility that converts data crawled from different services into clou
 * [RSS](http://en.wikipedia.org/wiki/RSS)
 * [Tumblr](https://www.tumblr.com/)
 * [GitHub](https://github.com/)
+* [Habrahabr](http://habrahabr.ru/)
 
 ### Examples Generated
 
@@ -69,6 +70,7 @@ In case you really need to compile a python package on Windows, do not use MinGW
 * Fonts are taken from the various of places and initially distributed by the authors under one of the open licenses.
 	- A huge collection of fonts can be found in the [googlefontdirectory github repository](https://github.com/w0ng/googlefontdirectory).
 	- Another collection of fonts by [fontsquirrel](http://www.fontsquirrel.com/fonts/)
+* Russian stopwords are taken from [stop-words](https://code.google.com/p/stop-words/)
 
 
 ### Author
