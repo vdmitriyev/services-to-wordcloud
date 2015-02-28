@@ -14,7 +14,7 @@ import logging
 #logging.getLogger("#orcid#").setLevel(logging.DEBUG)
 logging.getLogger("#orcid#").setLevel(logging.INFO)
 
-# configd for teh CSV
+# configs for the CSV
 CSV_FIELD_NAME = 'rssEntry'
 CSV_DELIM = ','
 

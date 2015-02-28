@@ -13,4 +13,4 @@ pip install -r requirements.txt
 
 ### Author
 
-* [Viktor Dmitriyev]
+* [Viktor Dmitriyev](https://github.com/vdmitriyev)
