@@ -6,3 +6,4 @@ start python orcid-to-wordcloud.py
 start python rss-to-wordcloud.py
 start python tumblr-to-wordcloud.py
 start python twitter-to-wordcloud.py
+start python habr-to-wordcloud.py

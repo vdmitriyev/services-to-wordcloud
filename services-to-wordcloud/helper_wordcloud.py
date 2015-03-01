@@ -1,15 +1,15 @@
 # coding: utf-8
 
-__author__ = "Viktor Dmitriyev"
-__copyright__ = "Copyright 2015, Viktor Dmitriyev"
-__credits__ = ["Viktor Dmitriyev"]
-__license__ = "MIT"
-__version__ = "1.1.0"
-__maintainer__ = "-"
-__email__ = ""
-__status__ = "dev"
-__date__ = "14.02.2015"
-__description__ = "Main class and some helper class for the word cloud"
+__author__ = 'Viktor Dmitriyev'
+__copyright__ = 'Copyright 2015, Viktor Dmitriyev'
+__credits__ = ['Viktor Dmitriyev']
+__license__ = 'MIT'
+__version__ = '1.1.0'
+__maintainer__ = '-'
+__email__ = ''
+__status__ = 'dev'
+__date__ = '14.02.2015'
+__description__ = 'Main class and some helper class for the word cloud'
 
 import os
 import pandas as pd
@@ -17,227 +17,231 @@ import matplotlib.pyplot as plt
 from wordcloud import WordCloud, STOPWORDS
 from helper_directory import DirectoryHelper
 
-"""Main class that transerf the service data to the word cloud."""
+
 class ServiceToWordCloud(object):
-  def __init__(self, data_file, data_folder, save_directory=None):
-    """
-      (obj) -> None
 
-      Initializing the class.
-    """
-    
-    print '[i] initializing class'
+    """Main class that transerf the service data to the word cloud."""
 
-    if save_directory is None:
-      save_directory = 'generated-noname-service'
+    def __init__(self, data_file, data_folder, save_directory=None):
+        """
+          (obj) -> None
 
-    print '[i] generated pngs will be saved inside "{}"'.format(save_directory)
+          Initializing the class.
+        """
 
-    self.wc_helper = WordCloudHelper(save_directory)
-    print '[i] initialing helper class'
-    
-    self.STOPWORDS = STOPWORDS
-    print '[i] stopwords loaded'
-    
-    self.df = DataLoader().localdata(data_file, data_folder)
-    print '[i] data loaded'
+        print '[i] initializing class'
 
-    self.config_stopwords()
-    print '[i] stopwords configured'
+        if save_directory is None:
+            save_directory = 'generated-noname-service'
 
-    # self.wrangle_data()
-    
+        print '[i] generated pngs will be saved inside "{}"'.format(save_directory)
 
-  def config_stopwords(self, more_stopwords=None):
-    """
-      (obj) -> None
+        self.wc_helper = WordCloudHelper(save_directory)
+        print '[i] initialing helper class'
 
-      Configuring stopwords by adding more if required
-    """
+        self.STOPWORDS = STOPWORDS
+        print '[i] stopwords loaded'
 
-    if more_stopwords is not None:
-      self.STOPWORDS = STOPWORDS.union(more_stopwords)
+        self.df = DataLoader().localdata(data_file, data_folder)
+        print '[i] data loaded'
 
-  def wrangle_data(self, df_field):
-    """
-      (obj) -> None
+        self.config_stopwords()
+        print '[i] stopwords configured'
 
-      Wranling with data before porcessing it
-    """
+        # self.wrangle_data()
 
-    assert df_field is not None, \
-          "df_field should not be None\ncheck vairable or override wrangle_data() method"
+    def config_stopwords(self, more_stopwords=None):
+        """
+          (obj) -> None
 
-    # joining together words from the dataset
-    words = ' '.join(self.df[df_field])
+          Configuring stopwords by adding more if required
+        """
 
-    # remove URLs, RTs, and twitter handles
-    cleaned_collection = " ".join([word for word in words.split()])
-    self.words = cleaned_collection
+        if more_stopwords is not None:
+            self.STOPWORDS = STOPWORDS.union(more_stopwords)
 
-    print '[i] data formatted'
+    def wrangle_data(self, df_field):
+        """
+          (obj) -> None
 
-  
-  def generate_word_cloud(self, fonts, masks, name_prefix='some-wordcloud', bg_color='white'):
-    """
-      (obj, list, list, str) -> None
-      
-      Generating the word clouds with different masks and fonts and saving it as images.
-    """
+          Wranling with data before porcessing it
+        """
 
-    if name_prefix is None:
-      name_prefix = 'some-wordcloud'
+        assert df_field is not None, \
+            'df_field should not be None\ncheck vairable or override wrangle_data() method'
 
-    BASE_FOLDER = self.wc_helper.save_dir
-    STOPWORDS = self.STOPWORDS
-    print BASE_FOLDER
+        # joining together words from the dataset
+        words = ' '.join(self.df[df_field])
 
-    from scipy.misc import imread
+        # remove URLs, RTs, and twitter handles
+        cleaned_collection = ' '.join([word for word in words.split()])
+        self.words = cleaned_collection
 
-    for mask_name in masks:
-      _mask_file = imread(masks[mask_name], flatten=True)
-      _mask_width = len(_mask_file[0]) + 1
-      _mask_height = len(_mask_file) + 1
-      for font_name in fonts:
-        _font_file = fonts[font_name]
-        _img_name = '%s-%s-%s-%s' % (str(name_prefix), str(font_name), str(mask_name), str(bg_color))
-        wordcloud = WordCloud( 
-                      font_path=_font_file,
-                      stopwords=STOPWORDS,
-                      background_color=bg_color,
-                      width=_mask_width,
-                      height=_mask_height,
-                      mask=_mask_file
-                     ).generate(self.words)
-        plt.imshow(wordcloud)
-        plt.axis('off')
-        plt.savefig(BASE_FOLDER + _img_name, dpi=300)
-        print '[i] image %s.png was generated ' % _img_name
+        print '[i] data formatted'
+
+    def generate_word_cloud(self, fonts, masks, name_prefix='some-wordcloud', bg_color='white'):
+        """
+          (obj, list, list, str) -> None
+
+          Generating the word clouds with different masks and fonts and saving it as images.
+        """
+
+        if name_prefix is None:
+            name_prefix = 'some-wordcloud'
+
+        BASE_FOLDER = self.wc_helper.save_dir
+        STOPWORDS = self.STOPWORDS
+        print BASE_FOLDER
+
+        from scipy.misc import imread
+
+        for mask_name in masks:
+            _mask_file = imread(masks[mask_name], flatten=True)
+            _mask_width = len(_mask_file[0]) + 1
+            _mask_height = len(_mask_file) + 1
+            for font_name in fonts:
+                _font_file = fonts[font_name]
+                _img_name = '%s-%s-%s-%s' % (str(name_prefix),
+                                             str(font_name), str(mask_name), str(bg_color))
+                wordcloud = WordCloud(
+                    font_path=_font_file,
+                    stopwords=STOPWORDS,
+                    background_color=bg_color,
+                    width=_mask_width,
+                    height=_mask_height,
+                    mask=_mask_file
+                ).generate(self.words)
+                plt.imshow(wordcloud)
+                plt.axis('off')
+                plt.savefig(BASE_FOLDER + _img_name, dpi=300)
+                print '[i] image %s.png was generated ' % _img_name
+
+    def process(self, service_name=None, fonts=None, masks=None):
+        """
+          (obj) -> None
+
+          Executing all methods relevant to processing.
+        """
+
+        if service_name is None:
+            service_name = 'noname-service-wordcloud'
+
+        if fonts is None:
+            fonts = self.wc_helper.load_fonts()
+        else:
+            fonts = self.wc_helper.load_fonts(fonts)
+
+        if masks is None:
+            masks = self.wc_helper.load_masks()
+        else:
+            masks = self.wc_helper.load_masks(masks)
+
+        self.generate_word_cloud(fonts, masks, name_prefix=service_name)
+
+        self.generate_word_cloud(
+            fonts, masks, name_prefix=service_name, bg_color='black')
 
 
-  def process(self, service_name=None, fonts=None, masks=None):
-    """
-      (obj) -> None
-
-      Executing all methods relevant to processing.
-    """
-
-    if service_name is None:
-      service_name = 'noname-service-wordcloud'
-
-    if fonts is None:
-      fonts = self.wc_helper.load_fonts()
-    else:
-      fonts = self.wc_helper.load_fonts(fonts)
-
-
-    if masks is None:
-      masks = self.wc_helper.load_masks()
-    else:
-      masks = self.wc_helper.load_masks(masks)
-
-
-    self.generate_word_cloud(fonts, masks, name_prefix=service_name)
-    self.generate_word_cloud(fonts, masks, name_prefix=service_name, bg_color='black')
-
-"""Class that is responsinble for data masks and fonts."""
 class WordCloudHelper():
 
-  def __init__(self, work_dir=None):
-    """
-      (obj, str) -> None
+    """Class that is responsinble for data masks and fonts."""
 
-      Initializing the class.
-    """
+    def __init__(self, work_dir=None):
+        """
+          (obj, str) -> None
 
-    # assert work_dir is not None, \
-    #       "work_dir should not be None"
+          Initializing the class.
+        """
 
-    self.dir_helper = DirectoryHelper(work_dir)
-    self.save_dir = self.dir_helper.work_dir
-    self.dir_helper.prepare_working_directory()
+        # assert work_dir is not None, \
+        #       "work_dir should not be None"
 
-    print '[i] working directory prepared'
+        self.dir_helper = DirectoryHelper(work_dir)
+        self.save_dir = self.dir_helper.work_dir
+        self.dir_helper.prepare_working_directory()
 
-  def load_fonts(self, selected_fonts=None):
-    """
-      (obj, list) -> dict
+        print '[i] working directory prepared'
 
-      Loading fonts as specified in the list or by itereting folder with fonts.
-    """
+    def load_fonts(self, selected_fonts=None):
+        """
+          (obj, list) -> dict
 
-    BASE_FOLDER = self.dir_helper.upper_directory() + 'fonts\\'
+          Loading fonts as specified in the list or by itereting folder with fonts.
+        """
 
-    fonts = {}
+        BASE_FOLDER = self.dir_helper.upper_directory() + 'fonts\\'
 
-    if selected_fonts is not None:
-      for font in selected_fonts:
-        fonts[font] = BASE_FOLDER + font + '.ttf'
-    else:
-      files = [f for f in os.listdir(BASE_FOLDER)]
-      for f in files:
-        if (f[-4:].lower() in ('.ttf')):
-          fonts[f[:-4]] = BASE_FOLDER + f
-    
+        fonts = {}
 
-    return fonts
+        if selected_fonts is not None:
+            for font in selected_fonts:
+                fonts[font] = BASE_FOLDER + font + '.ttf'
+        else:
+            files = [f for f in os.listdir(BASE_FOLDER)]
+            for f in files:
+                if (f[-4:].lower() in ('.ttf')):
+                    fonts[f[:-4]] = BASE_FOLDER + f
 
-  def load_masks(self, selected_masks=None):
-    """
-        (obj, list) -> dict
+        return fonts
 
-        Loading masks as specified in the list or by itereting folder with masks.
-    """
-    
-    BASE_FOLDER = self.dir_helper.upper_directory() + 'masks\\'
+    def load_masks(self, selected_masks=None):
+        """
+            (obj, list) -> dict
 
-    masks = {}
-    if selected_masks is not None:
-      for mask in selected_masks:
-        masks[mask] = BASE_FOLDER + mask + '.png'
-    else:
-      files = [f for f in os.listdir(BASE_FOLDER)]
-      for f in files:
-        if (f[-4:].lower() in ('.png')):
-          masks[f[:-4]] = BASE_FOLDER + f
+            Loading masks as specified in the list or by itereting folder with masks.
+        """
 
-    return masks
+        BASE_FOLDER = self.dir_helper.upper_directory() + 'masks\\'
 
-""" Class that is responsinble for data load."""
+        masks = {}
+        if selected_masks is not None:
+            for mask in selected_masks:
+                masks[mask] = BASE_FOLDER + mask + '.png'
+        else:
+            files = [f for f in os.listdir(BASE_FOLDER)]
+            for f in files:
+                if (f[-4:].lower() in ('.png')):
+                    masks[f[:-4]] = BASE_FOLDER + f
+
+        return masks
+
+
 class DataLoader():
 
-  def webdata(self):
-    """
-      (class) -> None
+    """Class that is responsinble for data load."""
 
-      Loading data stored somewhere on the web
-    """
-    
-    #import urllib
-    #url with dataset
-    #url = "http://www.ats.ucla.edu/stat/data/binary.csv"
-    
-    #df = pd.read_csv(url)
-    #return df
-    return None
+    def webdata(self):
+        """
+          (class) -> None
 
-  def localdata(self, data_file, data_folder):
-    """
-      (class) -> DataFrame
+          Loading data stored somewhere on the web
+        """
 
-      Loading data stored locally.
-    """
+        #import urllib
+        # url with dataset
+        #url = "http://www.ats.ucla.edu/stat/data/binary.csv"
 
-    assert data_file is not None, \
-          "data_file should not be None"
-    assert data_folder is not None, \
-          "data_folder should not be None"
+        #df = pd.read_csv(url)
+        # return df
+        return None
 
-    #reading data
-    try:
-      df = pd.read_csv(data_folder + data_file, encoding='utf-8')
-    except Exception, ex:
-      print '[e] %s' % str(ex)
-      print '[i] it looks like no data were downloaded so far' 
+    def localdata(self, data_file, data_folder):
+        """
+          (class) -> DataFrame
 
-    return df
+          Loading data stored locally.
+        """
+
+        assert data_file is not None, \
+            'data_file should not be None'
+        assert data_folder is not None, \
+            'data_folder should not be None'
+
+        # reading data
+        try:
+            df = pd.read_csv(data_folder + data_file, encoding='utf-8')
+        except Exception, ex:
+            print '[e] %s' % str(ex)
+            print '[i] it looks like no data were downloaded so far'
+
+        return df

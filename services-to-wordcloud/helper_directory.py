@@ -1,16 +1,16 @@
 # coding: utf-8
 #!/usr/bin/env python
 
-__author__     = "Viktor Dmitriyev"
-__copyright__ = "Copyright 2015, Viktor Dmitriyev"
-__credits__ = ["Viktor Dmitriyev"]
-__license__ = "MIT"
-__version__ = "1.0.0"
-__maintainer__ = "-"
-__email__     = ""
-__status__     = "dev"
-__date__    = "26.01.2015"
-__description__ = "Helper for the crawler that manages directory"
+__author__ = 'Viktor Dmitriyev'
+__copyright__ = 'Copyright 2015, Viktor Dmitriyev'
+__credits__ = ['Viktor Dmitriyev']
+__license__ = 'MIT'
+__version__ = '1.0.0'
+__maintainer__ = '-'
+__email__ = ''
+__status__ = 'dev'
+__date__ = '26.01.2015'
+__description__ = 'Helper for the crawler that manages directory'
 
 import os
 import string
@@ -21,9 +21,12 @@ from time import gmtime, strftime
 
 RAND_RANGE = 7
 
+
 class DirectoryHelper():
-    
-    def __init__(self , proposed_dir=None):
+
+    """Class to help managing directories."""
+
+    def __init__(self, proposed_dir=None):
         """
             (obj, str) -> None
 
@@ -74,7 +77,6 @@ class DirectoryHelper():
             os.makedirs(self.work_dir)
 
         self.clear_directory(self.work_dir)
-
 
     def move_from_work_directory(self):
         """
@@ -136,19 +138,21 @@ class DirectoryHelper():
 
         with codecs.open(file_name, 'r', encoding='utf8') as f:
             file_content = f.read()
-            
+
         return file_content
 
-    def gen_file_name(self, extention=".html", name=None):
+    def gen_file_name(self, extention='.html', name=None):
         """
             (obj, str) -> (str)
 
             Generate file name
         """
 
-        rand_path_range = ''.join(random.choice(string.ascii_lowercase + string.digits) for x in range(RAND_RANGE))
+        rand_path_range = ''.join(
+            random.choice(string.ascii_lowercase + string.digits) for x in range(RAND_RANGE))
         if name is None:
-            new_file_name = strftime("%Y-%m-%d", gmtime()) + '-' + rand_path_range + extention
+            new_file_name = strftime(
+                '%Y-%m-%d', gmtime()) + '-' + rand_path_range + extention
         else:
             new_file_name = name + '-' + rand_path_range + extention
 
