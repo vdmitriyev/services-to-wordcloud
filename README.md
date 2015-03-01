@@ -1,6 +1,6 @@
 ### About
 
-Tiny python utility that converts data crawled from different services into cloud of words.
+Tiny python utility that converts data crawled from different services into cloud of words. Utility represents collection of the different python scripts. Folder [services](services) contains the services supported with their more detailed description (installation, usage, etc.). Folder [services-to-wordcloud](services-to-wordcloud) contains the list of python scripts that are taking data acquired from particular service and transform data into  cloud of word.
 
 ### Supported Services so Far
 * [Twitter](https://twitter.com/)

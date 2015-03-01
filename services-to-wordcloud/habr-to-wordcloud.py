@@ -95,7 +95,8 @@ def main():
   save_directory = 'generated-habr'
   service_name = 'habr-wordcloud'
   fonts = ['clearsans-regular']
-  masks = ['square-mask']
+  masks = ['habr-logo-h-inverted-mask', 'habr-logo-inverted-mask']
+  #masks = ['square-mask']
 
   service = HabrServiceToWC(data_file, data_folder, save_directory)
   service.process(service_name, fonts, masks)
