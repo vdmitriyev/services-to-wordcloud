@@ -98,7 +98,7 @@ def process_comments():
     masks = ['habr-logo-h-inverted-mask', 'habr-logo-inverted-mask']
     masks = ['square-mask']
 
-    csv_field_name = 'habrComments'
+    csv_field_name = 'habrEntries'
 
     service = HabrServiceToWC(data_file=data_file, 
                                 data_folder=data_folder, 
@@ -117,7 +117,7 @@ def process_articles():
     fonts = ['clearsans-regular']
     masks = ['jet-mask']
 
-    csv_field_name = 'habrArticles'
+    csv_field_name = 'habrEntries'
 
     service = HabrServiceToWC(data_file=data_file, 
                                 data_folder=data_folder, 
