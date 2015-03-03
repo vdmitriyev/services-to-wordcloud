@@ -68,7 +68,7 @@ class ServiceToWordCloud(object):
         """
 
         assert df_field is not None, \
-            'df_field should not be None\ncheck vairable or override wrangle_data() method'
+            'df_field should not be None\ncheck variable or override wrangle_data() method'
 
         # joining together words from the dataset
         words = ' '.join(self.df[df_field])

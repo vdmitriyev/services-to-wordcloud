@@ -17,7 +17,7 @@ from helper_wordcloud import ServiceToWordCloud
 from helper_directory import DirectoryHelper
 
 # configd for teh CSV
-CSV_FIELD_NAME = 'habrComments'
+#CSV_FIELD_NAME = 'habrComments'
 
 # configuring stop words
 stop_words_folder = 'stopwords'
@@ -28,7 +28,7 @@ class HabrServiceToWC(ServiceToWordCloud):
 
     """Class to convert twitter data (tweets) into Word Cloud."""
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, csv_field_name, *args, **kwargs):
         """
           (obj, *args, **kwargs) -> None
 
@@ -41,7 +41,7 @@ class HabrServiceToWC(ServiceToWordCloud):
         self.config_stopwords()
 
         # wrangling twitter data
-        self.wrangle_data()
+        self.wrangle_data(csv_field_name)
 
     def config_stopwords(self):
         """
@@ -61,15 +61,18 @@ class HabrServiceToWC(ServiceToWordCloud):
         # adding fetched stopwords
         super(HabrServiceToWC, self).config_stopwords(custom_stopwords)
 
-    def wrangle_data(self):
+    def wrangle_data(self, csv_field_name):
         """
           (obj) -> None
 
           Wranling with data before porcessing
         """
 
+        assert csv_field_name is not None, \
+            'csv_field_name should not be None\ncheck variable'
+
         # join all data from the tumblr entries to a single string
-        words = ' '.join(self.df[CSV_FIELD_NAME])
+        words = ' '.join(self.df[csv_field_name])
 
         # simple html and other special symbols removal
         reg_exp = '(<.*?>)|(&.*?;)'
@@ -84,6 +87,44 @@ class HabrServiceToWC(ServiceToWordCloud):
         self.words = no_urls_words
         print '[i] data formatted'
 
+def process_comments():
+
+    # setting params for word cloud
+    data_file = 'habr-user-comments.csv'
+    data_folder = '../services/habr/data/'
+    save_directory = 'generated-habr-comments'
+    service_name = 'habr-wordcloud'
+    fonts = ['clearsans-regular']
+    masks = ['habr-logo-h-inverted-mask', 'habr-logo-inverted-mask']
+    masks = ['square-mask']
+
+    csv_field_name = 'habrComments'
+
+    service = HabrServiceToWC(data_file=data_file, 
+                                data_folder=data_folder, 
+                                save_directory=save_directory, 
+                                csv_field_name=csv_field_name)
+    
+    service.process(service_name, fonts, masks)
+
+def process_articles():
+    
+    # setting params for word cloud
+    data_file = 'habr-articles.csv'
+    data_folder = '../services/habr/data/'
+    save_directory = 'generated-habr-articles'
+    service_name = 'habr-wordcloud'
+    fonts = ['clearsans-regular']
+    masks = ['jet-mask']
+
+    csv_field_name = 'habrArticles'
+
+    service = HabrServiceToWC(data_file=data_file, 
+                                data_folder=data_folder, 
+                                save_directory=save_directory, 
+                                csv_field_name=csv_field_name)
+
+    service.process(service_name, fonts, masks)
 
 def main():
     """
@@ -91,19 +132,10 @@ def main():
 
       Main method that initiates instance of the class and starts processing.
     """
+    process_comments()
+    process_articles()
 
-    # setting params for word cloud
-    data_file = 'habr-user-comments.csv'
-    data_folder = '../services/habr/data/'
-    save_directory = 'generated-habr'
-    service_name = 'habr-wordcloud'
-    fonts = ['clearsans-regular']
-    masks = ['habr-logo-h-inverted-mask', 'habr-logo-inverted-mask']
-    #masks = ['square-mask']
-
-    service = HabrServiceToWC(data_file, data_folder, save_directory)
-    service.process(service_name, fonts, masks)
-
+    
 if __name__ == '__main__':
     # setting system default encoding to the UTF-8
     reload(sys)
