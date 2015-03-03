@@ -14,6 +14,11 @@ python habr_user_comments.py
 
 Install dependencies with pip
 ```
+pip install beautifulsoup4
+```
+
+Install dependencies with pip from ```requirements.txt``` file
+```
 pip install -r requirements.txt
 ```
 

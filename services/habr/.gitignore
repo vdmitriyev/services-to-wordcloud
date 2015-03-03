@@ -2,4 +2,5 @@
 *.txt
 *.log
 *.xml
+*.html
 data/*.csv
