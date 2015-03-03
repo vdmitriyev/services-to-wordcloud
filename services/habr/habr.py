@@ -23,7 +23,7 @@ from bs4 import BeautifulSoup
 SLEEP_TIME_IN_SECONDS = 2
 
 # CSV configs
-CSV_FIELD_NAME = u'habrComments'
+CSV_FIELD_NAME = u'habrEntries'
 CSV_DELIM = u','
 
 class BSCrawler():
@@ -44,7 +44,12 @@ class BSCrawler():
             print '[i] following url is going to be parsed in a dynamic way:\n {}'.format(url)
             self.dynamic_url = url
             user_name = self.dispatcher_dynamic[url][1]
-            self.dispatcher_dynamic[url][0](self, user_name)
+            file_name = self.dispatcher_dynamic[url][2]
+            try:
+                self.dispatcher_dynamic[url][0](self, user_name, file_name)
+            except Exception, ex:
+                print '[e] exception {}'.format(str(ex))
+                print '[i] error while crawling web page'
 
     def download_document(self, url):
         """
@@ -63,30 +68,26 @@ class BSCrawler():
 
         return html
 
-    def process_comments(self, user_name):
+    def process_comments(self, user_name, file_name):
         """
             (obj) -> None
-
             Processing comments from habrahabr.
         """
 
         def internal_parser(html):
             """
                 (str) -> dict
-
                 Internal parser that parses given html accoding to it's structure.
             """
-
             soup = BeautifulSoup(html)
-            fetched_comments = list()
+            fetched = list()
             comments = soup.findAll('div', attrs={'class':'message html_format '})
-            for comment in comments:
-                fetched_comments.append(comment.get_text(strip=True))
-            return fetched_comments
+            for entry in comments:
+                fetched.append(entry.get_text(strip=True))
+            return fetched
 
         result_csv = list()
-        cnt_page = 0
-        cnt_comments = 0
+        cnt_page, cnt_comments = 0, 0
 
         while True:
             cnt_page += 1
@@ -108,63 +109,89 @@ class BSCrawler():
             # setting the main script to sleep for some seconds
             sleep(SLEEP_TIME_IN_SECONDS)
 
-        self.data = {}
-        self.data['comments'] = result_csv
+        data = {}
+        data['entries'] = result_csv
 
         print '[i] all comments were extracted'
 
-    def save_csv(self, file_name):
+        self.save_csv(data, file_name)
+
+    def process_article(self, user_name, file_name):
+        """
+            (obj) -> None
+            Processing articles from habrahabr.
+        """
+
+        def internal_parser(html):
+            """
+                (str) -> dict
+                Internal parser that parses given html accoding to it's structure.
+            """
+            soup = BeautifulSoup(html)
+            fetched = list()
+            entries = soup.findAll('div', attrs={'class':'content html_format'})
+            for entry in entries:
+                fetched.append(entry.get_text(strip=True))
+            return fetched
+
+        result_csv = list()
+        url_to_download = self.dynamic_url
+
+        print '[i] url to download {}'.format(url_to_download)
+
+        fetched = internal_parser(self.download_document(url_to_download))
+        for i, row in enumerate(fetched):
+            result_csv.append([i, row])
+
+        data = {}
+        data['entries'] = result_csv
+
+        print '[i] article was extracted'
+        self.save_csv(data, file_name)
+
+    def save_csv(self, data, file_name):
         """
             (obj, str) -> None
 
             Checks if the directory 'data' exists, creates it otherwise.
-            Saves the data from twitter in csv using pandas.
+            Saves the data to the csv using pandas.
         """
 
         if not os.path.exists('data'):
             os.makedirs('data')
-
-        
-        # data to csv
-
-        # forming header
-        _csvdata = u'Number' + CSV_DELIM + CSV_FIELD_NAME + u'\n'
 
         def normalize_data(input_data):
             """
                 (str) -> (str)
                 Interenal method that normalizes data
             """
+            return input_data.replace(CSV_DELIM, '')
 
-            result = input_data.replace(CSV_DELIM, '')
-            #result = result.replace('\n', '')
-            return result
-
-        for row in self.data['comments']:
+        # forming header
+        _csvdata = u'Number' + CSV_DELIM + CSV_FIELD_NAME + u'\n'
+        for row in data['entries']:
             _csvdata += str(row[0]) + CSV_DELIM + normalize_data(row[1]) + u'\n'
 
-        # saving to the csv file
-        full_path = 'data\\' + file_name + '.csv'
+        # saving to csv
+        full_path = 'data' + '\\' + file_name
         _file = codecs.open(full_path, 'w', 'utf8')
         _file.write(_csvdata)
         _file.close()
 
-        print '[i] habr comments were saved into "{}"'.format(full_path)
+        print '[i] entries from habr were saved into "{}"'.format(full_path)
 
     # dispatchers for extract and parsing multiple web pages
     dispatcher_dynamic = {
-            #'http://habrahabr.ru/users/{}/comments/{}': [process_comments, "darx"],
-            #'http://habrahabr.ru/users/{}/comments/{}': [process_comments, "freetonik"],
-            'http://habrahabr.ru/users/{}/comments/{}': [process_comments, "vdmitriyev"]
+            #'http://habrahabr.ru/users/{}/comments/{}': [process_comments, "darx", "habr-user-comments.csv"],
+            #'http://habrahabr.ru/users/{}/comments/{}': [process_comments, "freetonik", "habr-user-comments.csv"],
+            'http://habrahabr.ru/users/{}/comments/{}': [process_comments, "vdmitriyev", "habr-user-comments.csv"],
+            'http://habrahabr.ru/company/makeitlab/blog/251865/': [process_article, "makeitlab", "habr-articles.csv"]
         }
 
 def main():
 
-    csv_file_name = "habr-user-comments"
-
     crawler = BSCrawler()
     crawler.crawl_dynamic()
-    crawler.save_csv(csv_file_name)
 
 if __name__ == '__main__':
 
