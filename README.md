@@ -62,7 +62,15 @@ conda install pil
 pip install git+git://github.com/amueller/word_cloud.git
 ```
 
-In case you really need to compile a python package on Windows, do not use MinGW, it won't work. Because the official compiler for the Python on Windows is *Microsoft Visual C++ Compiler*, the patch for your Windows can be found [here](http://www.microsoft.com/en-us/download/details.aspx?id=44266). Howeverm if you are fan of the MinGW and it's already installed and used as a "default" C and C++ compiler on your Windows machine, on the moment of the Python package compilation (while intalling [wordcloud](https://github.com/amueller/word_cloud)) is better to remove it from your %PATH% variable.
+In case you really need to compile a python package on Windows, do not use MinGW, it won't work. Because the official compiler for the Python on Windows is *Microsoft Visual C++ Compiler*, the patch for your Windows can be found [here](http://www.microsoft.com/en-us/download/details.aspx?id=44266). After installing specific compiler for Python 2.7 on Windows, you also will need to upgrade your setuptools:
+```
+pip install --upgrade setuptools
+```
+However, if you are fan of the MinGW and it's already installed and used as a "default" C and C++ compiler on your Windows machine, on the moment of the Python package compilation (while intalling [wordcloud](https://github.com/amueller/word_cloud)) is better to remove it from your %PATH% variable. 
+
+If above mentioned advises didn't work for you, here are some more detailed answers on various AMA services:
+* [Microsoft Visual C++ Compiler for Python 2.7](http://stackoverflow.com/questions/26140192/microsoft-visual-c-compiler-for-python-2-7)
+* [error: Unable to find vcvarsall.bat](http://stackoverflow.com/questions/2817869/error-unable-to-find-vcvarsall-bat)
 
 ### Credits
 
