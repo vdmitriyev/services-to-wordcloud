@@ -75,9 +75,10 @@ pip install --upgrade setuptools
 
 However, if you are fan of the MinGW and it's already installed and used as a "default" C and C++ compiler on your Windows machine, on the moment of the Python package compilation (while intalling [wordcloud](https://github.com/amueller/word_cloud)) is better to remove it from your %PATH% variable.
 
-If above mentioned advises didn't work for you, here are some more detailed answers on various AMA services:
+If above mentioned advises didn't work for you, here are some more detailed answers on various AMA services, reddit and various blogs:
 * [Microsoft Visual C++ Compiler for Python 2.7](http://stackoverflow.com/questions/26140192/microsoft-visual-c-compiler-for-python-2-7)
 * [error: Unable to find vcvarsall.bat](http://stackoverflow.com/questions/2817869/error-unable-to-find-vcvarsall-bat)
+* [What are some things every Python developer should know for developing on Windows?](https://www.reddit.com/r/Python/comments/3anuxz/what_are_some_things_every_python_developer/)
 
 More on Windows and Python you can find in article [How to deal with the pain of "unable to find vcvarsall.bat"](https://blogs.msdn.microsoft.com/pythonengineering/2016/04/11/unable-to-find-vcvarsall-bat/).
 
