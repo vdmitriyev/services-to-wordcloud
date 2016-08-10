@@ -3,6 +3,7 @@
 Tiny python utility that converts data crawled from different services into cloud of words. Utility represents collection of the different python scripts. Folder [services](services) contains the services supported with their more detailed description (installation, usage, etc.). Folder [services-to-wordcloud](services-to-wordcloud) contains the list of python scripts that are taking data acquired from particular service and transform data into  cloud of word.
 
 ### Supported Services so Far
+
 * [Twitter](https://twitter.com/)
 * [ORCID](http://orcid.org/)
 * [RSS](http://en.wikipedia.org/wiki/RSS)
@@ -10,28 +11,38 @@ Tiny python utility that converts data crawled from different services into clou
 * [GitHub](https://github.com/)
 * [Habrahabr](http://habrahabr.ru/)
 
-### Examples Generated
+### Examples
 
 **Twitter Timeline**
 
-![](./examples/twitter-wordcloud-twee-jollylodger-regular-square-mask-black.png)
-![](./examples/twitter-wordcloud-twee-walterturncoat-twitter-mask-white.png)
+<center>
+    ![](./examples/twitter-wordcloud-twee-jollylodger-regular-square-mask-black.png)
+    ![](./examples/twitter-wordcloud-twee-walterturncoat-twitter-mask-white.png)
+</center>
 
 **ORCID (publications abstracts)**
 
-![](./examples/orcid-wordcloud-arvo-regular-r-and-d-black.png)
+<center>
+    ![](./examples/orcid-wordcloud-arvo-regular-r-and-d-black.png)
+</center>
 
 **RSS Blog**
 
-![](./examples/rss-wordcloud-ribeye-regular-rss-mask-white.png)
+<center>
+    ![](./examples/rss-wordcloud-ribeye-regular-rss-mask-white.png)
+</center>
 
 **Tumblr Text Blogs**
 
-![](./examples/tumblr-wordcloud-eater-regular-square-mask-black.png)
+<center>
+    ![](./examples/tumblr-wordcloud-eater-regular-square-mask-black.png)
+</center>
 
 **GitHub Commits**
 
-![](./examples/github-wordcloud-jollylodger-regular-github-logo-inverted-mask-black.png)
+<center>
+    ![](./examples/github-wordcloud-jollylodger-regular-github-logo-inverted-mask-black.png)
+</center>
 
 ### Installation
 
@@ -62,6 +73,7 @@ binstar search -t conda twitter
 ```
 
 Installing [wordcloud](https://github.com/amueller/word_cloud) python package can be very tricky
+
 ```
 conda install pil
 pip install git+git://github.com/amueller/word_cloud.git
@@ -89,7 +101,7 @@ More on Windows and Python you can find in article [How to deal with the pain of
 
 ### Credits
 
-* Heavily inspired by the article [Turn Your Twitter Timeline into a Word Cloud Using Python](http://sebastianraschka.com/Articles/2014_twitter_wordcloud.html#A.-Downloading-Your-Twitter-Timeline-Tweets) written by [@rasbt](https://github.com/rasbt)
+* Inspired by the article [Turn Your Twitter Timeline into a Word Cloud Using Python](http://sebastianraschka.com/Articles/2014_twitter_wordcloud.html#A.-Downloading-Your-Twitter-Timeline-Tweets) written by [@rasbt](https://github.com/rasbt)
 * Fonts are taken from the various of places and initially distributed by the authors under one of the open licenses.
 	- A huge collection of fonts can be found in the [googlefontdirectory github repository](https://github.com/w0ng/googlefontdirectory).
 	- Another collection of fonts by [fontsquirrel](http://www.fontsquirrel.com/fonts/)
@@ -97,8 +109,9 @@ More on Windows and Python you can find in article [How to deal with the pain of
 
 
 ### Author
+
 * [Viktor Dmitriyev](https://github.com/vdmitriyev)
 
 ###  License
 
-Check this file with [license](LICENSE)
+The MIT License (MIT). For details check [license](LICENSE) file.

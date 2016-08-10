@@ -1,0 +1,6 @@
+# dependencies
+pyprind
+numpy
+matplotlib
+pandas
+scipy
