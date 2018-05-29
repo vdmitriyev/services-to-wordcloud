@@ -15,36 +15,28 @@ Tiny python utility that converts data crawled from different services into clou
 
 **Twitter Timeline**
 
-![twitter wordcloud twee jollylodger](examples/twitter-wordcloud-twee-jollylodger-regular-square-mask-black.png)
-
-<center>
-
-    ![twitter wordcloud twee walterturncoat](examples/twitter-wordcloud-twee-walterturncoat-twitter-mask-white.png)
-</center>
+![twitter wordcloud twee jollylodger](./examples/twitter-wordcloud-twee-jollylodger-regular-square-mask-black.png)
+![twitter wordcloud twee walterturncoat](./examples/twitter-wordcloud-twee-walterturncoat-twitter-mask-white.png)
 
 **ORCID (publications abstracts)**
 
-<center>
-    ![](./examples/orcid-wordcloud-arvo-regular-r-and-d-black.png)
-</center>
+
+![](./examples/orcid-wordcloud-arvo-regular-r-and-d-black.png)
+
 
 **RSS Blog**
 
-<center>
-    ![](./examples/rss-wordcloud-ribeye-regular-rss-mask-white.png)
-</center>
+
+![](./examples/rss-wordcloud-ribeye-regular-rss-mask-white.png)
+
 
 **Tumblr Text Blogs**
 
-<center>
-    ![](./examples/tumblr-wordcloud-eater-regular-square-mask-black.png)
-</center>
+![](./examples/tumblr-wordcloud-eater-regular-square-mask-black.png)
 
 **GitHub Commits**
 
-<center>
-    ![](./examples/github-wordcloud-jollylodger-regular-github-logo-inverted-mask-black.png)
-</center>
+![](./examples/github-wordcloud-jollylodger-regular-github-logo-inverted-mask-black.png)
 
 ### Installation
 
