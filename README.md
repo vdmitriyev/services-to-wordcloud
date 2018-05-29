@@ -15,9 +15,11 @@ Tiny python utility that converts data crawled from different services into clou
 
 **Twitter Timeline**
 
+![twitter wordcloud twee jollylodger](examples/twitter-wordcloud-twee-jollylodger-regular-square-mask-black.png)
+
 <center>
-    ![](examples/twitter-wordcloud-twee-jollylodger-regular-square-mask-black.png)
-    ![](examples/twitter-wordcloud-twee-walterturncoat-twitter-mask-white.png)
+
+    ![twitter wordcloud twee walterturncoat](examples/twitter-wordcloud-twee-walterturncoat-twitter-mask-white.png)
 </center>
 
 **ORCID (publications abstracts)**
